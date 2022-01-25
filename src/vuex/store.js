@@ -3,11 +3,31 @@ import { createStore } from 'vuex'
 
 const store = createStore({
     state: {
-        users: []
+        users: [],
+        seluser: []
     },
     mutations: {
         SET_USERS_TO_STATE: (state, users) => {
             state.users = users;
+        },
+        SET_SELUSER: (state, user) => {
+            if (state.seluser.length) {
+                let isUserExist = false;
+                state.seluser.map(function (item) {
+                    if (item.name === user.name) {
+                        isUserExist = true;
+                        state.seluser.slice(user)
+                    }
+                })
+                if (!isUserExist) {
+                    state.seluser.push(user)
+                }
+            } else {
+                state.seluser.push(user)
+            }
+        },
+        REMOVE_USER: (state, index) => {
+            state.seluser.splice(index, 1)
         }
     },
     actions: {
@@ -23,11 +43,21 @@ const store = createStore({
                     console.log(error)
                     return error;
                 })
+        },
+        SELECTED_USER({ commit }, user) {
+            commit('SET_SELUSER', user);
+            console.log('SET_SELUSER', user)
+        },
+        DELETE_USER({ commit }, index) {
+            commit('REMOVE_USER', index)
         }
     },
     getters: {
         USERS(state) {
             return state.users;
+        },
+        SELUSER(state) {
+            return state.seluser;
         }
     },
 });

@@ -9,7 +9,7 @@
       <h3>{{ user_data.name }}</h3>
     </a>
     <p>Login: {{ user_data.login }}</p>
-    <button @click="selected">select</button>
+    <button @click="selectedUser">select</button>
   </div>
 </template>
 
@@ -30,8 +30,8 @@ export default {
   },
   computed: {},
   methods: {
-    selected() {
-      this.$emit("sendName", this.user_data.name);
+    selectedUser() {
+      this.$emit("selectedUser", this.user_data);
     },
   },
   watch: {},

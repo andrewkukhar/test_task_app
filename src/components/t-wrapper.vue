@@ -1,10 +1,11 @@
 <template>
   <div class="wrapper">
-    <p>{{ title }}</p>
     <tHeader />
     <div class="main">
       <tSidebar class="sidebar" />
-      <tContent class="content" />
+      <keep-alive class="content">
+        <router-view></router-view>
+      </keep-alive>
     </div>
     <tFooter class="footer" />
   </div>
@@ -13,7 +14,6 @@
 <script>
 import tHeader from "./t-header";
 import tSidebar from "./t-sidebar";
-import tContent from "./t-content";
 import tFooter from "./t-footer";
 
 export default {
@@ -21,7 +21,6 @@ export default {
   components: {
     tHeader,
     tSidebar,
-    tContent,
     tFooter,
   },
   props: {},

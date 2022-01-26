@@ -4,7 +4,7 @@ import { createStore } from 'vuex'
 const store = createStore({
     state: {
         users: [],
-        seluser: []
+        seluser: [],
     },
     mutations: {
         SET_USERS_TO_STATE: (state, users) => {
@@ -28,7 +28,7 @@ const store = createStore({
         },
         REMOVE_USER: (state, index) => {
             state.seluser.splice(index, 1)
-        }
+        },
     },
     actions: {
         GET_USERS_FROM_API({ commit }) {
@@ -50,7 +50,7 @@ const store = createStore({
         },
         DELETE_USER({ commit }, index) {
             commit('REMOVE_USER', index)
-        }
+        },
     },
     getters: {
         USERS(state) {
@@ -58,7 +58,7 @@ const store = createStore({
         },
         SELUSER(state) {
             return state.seluser;
-        }
+        },
     },
 });
 

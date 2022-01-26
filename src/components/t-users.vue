@@ -22,7 +22,7 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters(["USERS", "SELUSER"]),
+    ...mapGetters(["USERS"]),
   },
   methods: {
     ...mapActions(["GET_USERS_FROM_API", "SELECTED_USER"]),

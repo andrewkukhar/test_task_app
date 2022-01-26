@@ -21,7 +21,10 @@ export default {
   components: {},
   props: {},
   data() {
-    return {};
+    return {
+      // searchId: "",
+      // searchLogin: "",
+    };
   },
   computed: {},
   methods: {},
@@ -59,10 +62,6 @@ form {
     width: 300px;
   }
 }
-/* .search__id,
-.search__login {
-  background: #a3d0c3;
-} */
 .search__id input,
 .search__login input {
   width: 100%;

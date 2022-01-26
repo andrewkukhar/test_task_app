@@ -1,21 +1,20 @@
 import VueRouter from "vue-router";
-import users from "@/components/t-users";
-import cartUsers from "@/components/t-cart-users";
-let router = new VueRouter({
+import list from "../components/t-users";
+import cartlist from "../components/t-cart-users";
+
+export default new VueRouter({
     routes: [
         {
-            path: '/src/components/t-users.vue',
-            name: 'users',
-            component: users,
-            props: true
+            path: '',
+            name: 'list',
+            component: list
         },
         {
-            path: '/src/components/t-cart-users.vue',
-            name: 'seluser',
-            component: cartUsers,
+            path: '/cartlist',
+            name: 'cartlist',
+            component: cartlist,
             props: true
         }
-    ]
+    ],
+    mode: 'history'
 })
-
-export default router;

@@ -5,7 +5,10 @@
       :src="require('../assets/img/1.jpg')"
       alt="users-avatar"
     />
-    <a href="#user-info">
+    <tPopup class="popup__pos" v-if="isVisiblePop" @closePop="closePop">
+      <p>{{ user_data.info }}</p>
+    </tPopup>
+    <a class="show-info" href="#user-info" @click="showInfo">
       <h3>{{ user_data.name }}</h3>
     </a>
     <p>Login: {{ user_data.login }}</p>
@@ -14,9 +17,13 @@
 </template>
 
 <script>
+import tPopup from "./t-popup";
+import toFix from "../filters/toFix";
 export default {
   name: "users",
-  components: {},
+  components: {
+    tPopup,
+  },
   props: {
     user_data: {
       type: Object,
@@ -26,10 +33,21 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      isVisiblePop: false,
+    };
+  },
+  filters: {
+    toFix
   },
   computed: {},
   methods: {
+    showInfo() {
+      this.isVisiblePop = true;
+    },
+    closePop() {
+      this.isVisiblePop = false;
+    },
     selectedUser() {
       this.$emit("selectedUser", this.user_data);
     },
@@ -41,6 +59,7 @@ export default {
 
 <style>
 .users__item {
+  position: relative;
   max-width: 299px;
   width: 100%;
   display: flex;
@@ -51,6 +70,13 @@ export default {
   box-shadow: 0 0 8px 0 #e8e8e8;
   padding: 5px;
   margin-bottom: 5px;
+}
+.popup__pos {
+  z-index: 12;
+  position: absolute;
+  top: 25%;
+  left: 0;
+  right: 0;
 }
 .users__item img {
   border-radius: 50%;
@@ -66,6 +92,9 @@ export default {
   border-radius: 15px;
   background-color: orange;
   padding: 10px 20px;
+  cursor: pointer;
+}
+.show-info {
   cursor: pointer;
 }
 .users__item p {

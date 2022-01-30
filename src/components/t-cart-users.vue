@@ -3,7 +3,7 @@
     <h3>selected users</h3>
     <cartUserItem
       v-for="(item, index) in seluser_data"
-      :key="item.article"
+      :key="item.name"
       :seluser_item="item"
       @deleteUser="deleteUser(index)"
     />
@@ -27,9 +27,7 @@ export default {
     },
   },
   data() {
-    return {
-      title: "selected users",
-    };
+    return {};
   },
   computed: {},
   methods: {

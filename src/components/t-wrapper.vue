@@ -4,17 +4,16 @@
     <div class="main">
       <div class="sidebar">
         <div class="sidebar-list">
-          <button @click="toggleEl">users</button>
-          <button @click="toggleElSel">selected users</button>
+          <router-link class="btn-sisebar" to="/">users</router-link>
+          <router-link
+            class="btn-sisebar"
+            :to="{ name: 'cartlist', params: { seluser_data: SELUSER } }"
+            >selected users</router-link
+          >
         </div>
       </div>
       <div class="content">
-        <users id="userss" v-show="isElVisible" />
-        <cartUsers
-          id="seluserss"
-          v-if="SELUSER.length"
-          :seluser_data="SELUSER"
-        />
+        <router-view></router-view>
       </div>
     </div>
     <tFooter class="footer" />
@@ -23,39 +22,26 @@
 
 <script>
 import tHeader from "./t-header";
-import users from "../components/t-users";
-import cartUsers from "../components/t-cart-users";
 import tFooter from "./t-footer";
 import { mapGetters } from "vuex";
 
 export default {
   name: "wrapper",
-  el: "#userss",
   components: {
     tHeader,
-    users,
-    cartUsers,
     tFooter,
   },
   props: {},
   data() {
-    return {
-      toggleEl: true,
-      toggleElSel: false
-    };
+    return {};
   },
   computed: {
     ...mapGetters(["SELUSER"]),
   },
-  methods: {
-    toggleEl() {
-      this.isElVisible = !this.isElVisible;
-    },
-    toggleElSel() {
-      this.isElVisible = !this.isElVisible;
-    },
+  methods: {},
+  watch: {
+    
   },
-  watch: {},
   mounted() {},
 };
 </script>
@@ -94,7 +80,7 @@ export default {
   align-items: stretch;
   text-align: start;
 }
-.sidebar-list button {
+.btn-sisebar {
   width: 100%;
   background-color: orange;
   border-radius: 10px;

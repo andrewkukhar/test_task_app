@@ -1,33 +1,60 @@
 <template>
   <div class="header">
-    <div class="search__id">
-      <form class="form">
-        <input type="text" placeholder="Search by id..." />
-        <button type="submit"></button>
-      </form>
-    </div>
-    <div class="search__login">
-      <form class="form">
-        <input type="text" placeholder="Search by login..." />
-        <button type="submit"></button>
-      </form>
-    </div>
+    <tSort
+      class="sorted"
+      :options="options"
+      @select="sortCategories"
+      :selected="selected"
+    />
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+import tSort from "./t-sorted";
+
 export default {
   name: "tHeader",
-  components: {},
+  components: {
+    tSort,
+  },
   props: {},
   data() {
     return {
-      // searchId: "",
-      // searchLogin: "",
+      options: [
+        { name: "Search", value: "all" },
+        { name: "id", value: "1" },
+        { name: "login", value: "userName" },
+      ],
+      selected: "Search",
+      sortedUsers: [],
     };
   },
-  computed: {},
-  methods: {},
+  computed: {
+    ...mapGetters(["USERS", "SELUSER"]),
+    // filteredUsers() {
+    //   if (this.sortedUsers.length) {
+    //     return this.sortedUsers;
+    //   } else {
+    //     return this.USERS;
+    //   }
+    // },
+  },
+  methods: {
+    sortCategories(options) {
+      this.sortedUsers = [];
+      let su = this;
+      this.USERS.map(function (item) {
+        if (item.options === options.name) {
+          su.sortedUsers.push(item);
+        }
+      });
+      this.selected = options.name;
+    },
+    optionSelect(option) {
+      this.selected = option.name;
+    },
+  },
   watch: {},
   mounted() {},
 };
@@ -41,11 +68,18 @@ export default {
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-left: 50px;
   align-items: center;
   background: #a3d0c3;
 }
-form {
+.sorted {
+  z-index: 13;
+  width: 250px;
+  margin: 15px 0px;
+  border: 1px solid azure;
+}
+/* form {
   width: 100%;
   position: relative;
   width: 300px;
@@ -61,8 +95,8 @@ form {
   form {
     width: 300px;
   }
-}
-.search__id input,
+} */
+/* .search__id input,
 .search__login input {
   width: 100%;
   height: 42px;
@@ -85,5 +119,5 @@ form {
   background: #86b0b4 no-repeat center/50% url("../assets/img/icons-search.png");
   border-radius: 5px;
   cursor: pointer;
-}
+} */
 </style>

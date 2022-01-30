@@ -1,7 +1,10 @@
-import axios from 'axios';
-import { createStore } from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
 
-const store = createStore({
+Vue.use(Vuex);
+import axios from 'axios';
+
+let store = new Vuex.Store({
     state: {
         users: [],
         seluser: [],

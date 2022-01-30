@@ -1,13 +1,17 @@
-import VueRouter from "vue-router";
+import Vue from 'vue'
+import Router from "vue-router";
 import list from "../components/t-users";
 import cartlist from "../components/t-cart-users";
 
-export default new VueRouter({
+Vue.use(Router);
+
+let router = new Router({
     routes: [
         {
-            path: '',
+            path: '/',
             name: 'list',
-            component: list
+            component: list,
+            props: true
         },
         {
             path: '/cartlist',
@@ -16,5 +20,5 @@ export default new VueRouter({
             props: true
         }
     ],
-    mode: 'history'
 })
+export default router;

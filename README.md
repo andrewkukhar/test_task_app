@@ -1,4 +1,4 @@
-# test_app
+# test_app_spa
 
 ## Project setup
 ```

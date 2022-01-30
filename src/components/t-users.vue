@@ -2,7 +2,7 @@
   <div class="users">
     <userItem
       v-for="user in USERS"
-      :key="user.article"
+      :key="user.name"
       :user_data="user"
       @selectedUser="selectedUser"
     />
@@ -22,7 +22,7 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters(["USERS"]),
+    ...mapGetters(["USERS", "SELUSER"]),
   },
   methods: {
     ...mapActions(["GET_USERS_FROM_API", "SELECTED_USER"]),

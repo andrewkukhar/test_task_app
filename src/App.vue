@@ -1,10 +1,12 @@
 <template>
-  <h1>TEST - APP</h1>
-  <wrapper />
+  <div id="app">
+    <wrapper />
+  </div>
 </template>
 
 <script>
 import wrapper from "./components/t-wrapper.vue";
+
 export default {
   name: "App",
   components: {
@@ -20,6 +22,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 10px;
+  margin-top: 60px;
 }
 </style>

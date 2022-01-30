@@ -1,40 +1,52 @@
 {
-    "users": [
-        {
-            "id": 1,
-            "image": "1.jpg",
-            "name": "Andrey",
-            "login": "usernumb1"
-        },
-        {
-            "id": 2,
-            "image": "1.jpg",
-            "name": "Vadim",
-            "login": "usernumb2"
-        },
-        {
-            "id": 3,
-            "image": "1.jpg",
-            "name": "Vlad",
-            "login": "usernumb3"
-        },
-        {
-            "id": 4,
-            "image": "1.jpg",
-            "name": "Sergey",
-            "login": "usernumb4"
-        },
-        {
-            "id": 5,
-            "image": "1.jpg",
-            "name": "Slavik",
-            "login": "usernumb5"
-        },
-        {
-            "id": 6,
-            "image": "1.jpg",
-            "name": "Ruslan",
-            "login": "usernumb6"
-        }
-    ]
+  "users": [
+    {
+      "id": 1,
+      "image": "1.jpg",
+      "name": "Andrey",
+      "login": "userAndrey",
+      "info": "WN XN 948",
+      "category": "id"
+    },
+    {
+      "id": 2,
+      "image": "1.jpg",
+      "name": "Vadim",
+      "login": "userVadim",
+      "info": "WN XN 954",
+      "category": "id"
+    },
+    {
+      "id": 3,
+      "image": "1.jpg",
+      "name": "Vlad",
+      "login": "userVlad",
+      "info": "WN XN 910",
+      "category": "id"
+    },
+    {
+      "id": 4,
+      "image": "1.jpg",
+      "name": "Sergey",
+      "login": "userSergey",
+      "info": "WN XN 950",
+      "category": "login"
+    },
+    {
+      "id": 5,
+      "image": "1.jpg",
+      "name": "Slavik",
+      "login": "userSlavik",
+      "info": "WN XN 900",
+      "category": "login"
+    },
+    {
+      "id": 6,
+      "image": "1.jpg",
+      "name": "Ruslan",
+      "login": "userRuslan",
+      "info": "WN XN 949",
+      "category": "login"
+    }
+  ]
 }

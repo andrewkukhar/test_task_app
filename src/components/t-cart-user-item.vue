@@ -5,7 +5,6 @@
       <p>{{ seluser_item.name }}</p>
       <p>{{ seluser_item.login }}</p>
     </div>
-    <div class="cart-user-item-quantity"></div>
     <button @click="deleteUser">delete</button>
   </div>
 </template>
@@ -23,9 +22,7 @@ export default {
     },
   },
   data() {
-    return {
-      title: "selected user item",
-    };
+    return {};
   },
   computed: {},
   methods: {

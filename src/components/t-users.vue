@@ -12,6 +12,7 @@
 <script>
 import userItem from "./t-user-item";
 import { mapActions, mapGetters } from "vuex";
+
 export default {
   name: "users",
   components: {
@@ -22,19 +23,34 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters(["USERS", "SELUSER"]),
+    ...mapGetters(["USERS", "SELUSER", "SEARCH_VALUE"]),
   },
   methods: {
     ...mapActions(["GET_USERS_FROM_API", "SELECTED_USER"]),
     selectedUser(data) {
       this.SELECTED_USER(data);
     },
+    sortUserBysearchId(value) {
+      this.sortedUsers = [...this.USERS];
+      if (value) {
+        this.sortedUsers = this.sortedUsers.filter(function (item) {
+          return item.name.toLowerCase().includes(value.toLowerCase());
+        });
+      } else {
+        this.sortedUsers = this.USERS;
+      }
+    },
   },
-  watch: {},
+  watch: {
+    SEARCH_VALUE() {
+      this.sortUserBysearchId(this.SEARCH_VALUE);
+    },
+  },
   mounted() {
     this.GET_USERS_FROM_API().then((response) => {
       if (response.data) {
         console.log("Data arrived!");
+        this.sortUserBysearchId(this.SEARCH_VALUE);
       }
     });
   },

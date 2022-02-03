@@ -4,7 +4,7 @@
     <div class="main">
       <div class="sidebar">
         <div class="sidebar-list">
-          <router-link class="btn-sisebar" to="/">users</router-link>
+          <router-link class="btn-sisebar" to="/list">users</router-link>
           <router-link
             class="btn-sisebar"
             :to="{ name: 'cartlist', params: { seluser_data: SELUSER } }"
@@ -39,9 +39,7 @@ export default {
     ...mapGetters(["SELUSER"]),
   },
   methods: {},
-  watch: {
-    
-  },
+  watch: {},
   mounted() {},
 };
 </script>

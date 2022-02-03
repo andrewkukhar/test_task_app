@@ -6,10 +6,14 @@ import axios from 'axios';
 
 let store = new Vuex.Store({
     state: {
+        searchValue: '',
         users: [],
         seluser: [],
     },
     mutations: {
+        SET_SEARCH_VALUE_TO_VUEX: (state, value) => {
+            state.searchValue = value;
+        },
         SET_USERS_TO_STATE: (state, users) => {
             state.users = users;
         },
@@ -34,6 +38,9 @@ let store = new Vuex.Store({
         },
     },
     actions: {
+        GET_SEARCH_VALUE_TO_VUEX({ commit }, value) {
+            commit('SET_SEARCH_VALUE_TO_VUEX', value)
+        },
         GET_USERS_FROM_API({ commit }) {
             return axios('http://localhost:3000/users', {
                 method: "GET"
@@ -62,6 +69,9 @@ let store = new Vuex.Store({
         SELUSER(state) {
             return state.seluser;
         },
+        SEARCH_VALUE(state) {
+            return state.searchValue;
+        }
     },
 });
 
